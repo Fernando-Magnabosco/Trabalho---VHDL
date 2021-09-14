@@ -1,6 +1,5 @@
 `include "soma.v"
 `include "multiplica.v"
-`include "mux.v"
 
 module ULA(
 
@@ -13,8 +12,8 @@ module ULA(
 
     wire [15:0] D,E;
     wire [0:0] F,G;
-    multiplica m0(A,B,D);
-    SOMA s0(A,B,E,overflow);
+    SOMA s0(A,B,D,overflow);
+    multiplica m0(A,B,E);
     mux2x1_16b mux0(D,E,SEL,C);
 
 endmodule

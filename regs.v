@@ -6,6 +6,7 @@ module reg_8b_in_16b_out(
 
 );
 
+  
     always @ (posedge clk & LX) begin
 
         C <= X;

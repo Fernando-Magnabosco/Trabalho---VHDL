@@ -1,3 +1,4 @@
+`include "mux.v"
 
 module multiplica(
 
@@ -13,7 +14,7 @@ module multiplica(
     assign F = E*D;
     xor x(H,A[15],B[15]);
     multiply_minus_one c1(F,G);
-    mux_2_to_1_16b mux1(F,G,H,C);
+    mux2x1_16b mux1(F,G,H,C);
 
 endmodule
 
