@@ -1,7 +1,7 @@
 module BC(
 
     input [0:0] START,RST,clk,
-    output reg [0:0] LX, LS, LH, SEL_ULA, finished,
+    output reg [0:0] LX, LS, LH, H, finished,
     output reg [1:0] M0,M1,M2
 
 );
@@ -42,7 +42,7 @@ module BC(
                         LX = 1'b1;
                         M1 = 2'b01;
                         M2 = 2'b00;
-                        SEL_ULA = 1'b1;
+                        H = 1'b1;
 
                     end
                     
@@ -75,7 +75,7 @@ module BC(
                         LH = 1'b0;
                         M1 = 2'b10;
                         M2 = 2'b11;
-                        SEL_ULA = 1'b0;
+                        H = 1'b0;
 
                 end 
 
@@ -91,12 +91,12 @@ module BC(
                 4'b0101: begin
                     
                         state <= 4'b0110;
-                        finished = 1'b1; 
 
                 end
 
                 4'b0110: begin
                     
+                    finished = 1'b1;
                     LS = 1'b0;
                         
                 end
