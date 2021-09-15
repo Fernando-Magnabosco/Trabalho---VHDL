@@ -1,4 +1,4 @@
-module mux2x1_16b(A,B,SEL,D);
+module mux2x1_16b(A,B,SEL,D); // Mux 2 para 1 com IO de 16 bits;
 
     input [15:0]A,B;
     input [0:0] SEL;
@@ -18,7 +18,7 @@ module mux2x1_16b(A,B,SEL,D);
 
 endmodule
 
-module mux4x1_16b(A,B,C,D,SEL,E);
+module mux4x1_16b(A,B,C,D,SEL,E); // Mux 4 para 1 com IO's de 16 bits;
 
     input [15:0] A,B,C,D;
     input [1:0] SEL;

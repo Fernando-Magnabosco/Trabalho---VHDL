@@ -1,7 +1,10 @@
 `include "soma.v"
 `include "multiplica.v"
 
-module ULA(
+module ULA( // MUX com entradas A e B e saída C;
+            // Retorna C = A+B se o seletor for 0. 
+            // Retorna C = A*B se o seletor for 1;
+            // Retorna o sinal de overflow para a operação de soma;
 
     input [15:0] A,B,
     input [0:0] SEL,

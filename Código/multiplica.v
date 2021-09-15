@@ -1,6 +1,6 @@
 `include "mux.v"
 
-module multiplica(
+module multiplica( //Retorna C = A*B;
 
     input [15:0] A,B,
     output [15:0] C
@@ -19,7 +19,7 @@ module multiplica(
 endmodule
 
 
-module multiply_minus_one(    
+module multiply_minus_one(    //Retorna B = -A, sendo A >= 0;
 
     input [15:0] A,
     output [15:0] B
@@ -33,7 +33,7 @@ module multiply_minus_one(
 
 endmodule
 
-module absolute(    
+module absolute(   // Retorna B = |A|;
 
     input [15:0] A,
     output [15:0] B
@@ -49,7 +49,7 @@ module absolute(
 endmodule
 
 
-module not_16b(    
+module not_16b(    // Retorna B = ~A, bit a bit;
 
     input [15:0] A,
     output [15:0] B

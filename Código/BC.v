@@ -6,9 +6,9 @@ module BC(
 
 );
 
-    reg [3:0] state;
+    reg [3:0] state; // registrador que guarda o estado atual do bloco;
 
-    initial begin
+    initial begin // inicializa algumas variáveis como zero;
 
         state = 4'b0000;
         LX = 1'b0;
@@ -18,9 +18,9 @@ module BC(
 
     end
 
-    always @ (posedge clk or negedge RST) begin
+    always @ (posedge clk or negedge RST) begin // sincroniza com o valor de clk, ou no reset;
         
-        if (RST) begin
+        if (RST) begin // reconfigura as variáveis para seus valores iniciais;
             
             state = 4'b0000;
             LX = 1'b0;
@@ -34,9 +34,9 @@ module BC(
             
             case(state)
 
-                4'b0000: begin
+                4'b0000: begin // Estado 0;
                     
-                    if(START)begin
+                    if(START)begin // Se o valor de start for um, o bloco inicializa;
                         
                         state <= 4'b0001;
                         LX = 1'b1;
@@ -48,7 +48,7 @@ module BC(
                     
                 end
 
-                4'b0001: begin
+                4'b0001: begin // Estado 1;
 
                         state <= 4'b0010;
                         LH = 1'b1;
@@ -59,7 +59,7 @@ module BC(
                         
                 end
 
-                4'b0010: begin
+                4'b0010: begin // Estado 2;
                     
                         state <= 4'b0011;
                         M0 = 2'b10;
@@ -68,7 +68,7 @@ module BC(
 
                 end
 
-                4'b0011: begin
+                4'b0011: begin // Estado 3;
                     
                         state <= 4'b0100;
                         LS = 1'b1;
@@ -79,7 +79,7 @@ module BC(
 
                 end 
 
-                4'b0100: begin
+                4'b0100: begin // Estado 4;
                     
                         state <= 4'b0101;
                         M0 = 2'b11;
@@ -88,13 +88,13 @@ module BC(
 
                 end
 
-                4'b0101: begin
+                4'b0101: begin // Estado 5 (apenas espera um pulso de clock);
                     
                         state <= 4'b0110;
 
                 end
 
-                4'b0110: begin
+                4'b0110: begin // Estado 6;
                     
                     finished = 1'b1;
                     LS = 1'b0;

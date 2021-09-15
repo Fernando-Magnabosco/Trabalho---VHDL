@@ -9,8 +9,8 @@ reg clk = 0;
 wire wire_clk;
 assign wire_clk = clk;
 
-// IN OUT BC;
-reg [0:0] Start, Reset;
+// IN OUT BC0;
+reg [0:0] START, RST;
 wire [0:0] LX,LS,LH,H,finished;
 wire [1:0] M0,M1,M2;
 
@@ -21,14 +21,14 @@ wire [0:0] Overflow;
 wire [15:0] Resultado;
 
 //
-reg [0:0] auxOverflow;
+reg [0:0] auxOverflow = 1'b0;
 
 //Blocos 
 
-BC BC0(Start,Reset,wire_clk,LX,LS,LH,H,finished,M0,M1,M2);
+BC BC0(START,RST,wire_clk,LX,LS,LH,H,finished,M0,M1,M2);
 BO BO0(X,A,B,C,clk,LX,LS,LH,H,M0,M1,M2, Overflow, Resultado);
 
-always #1 begin
+always #1 begin // Oscila o sinal de clock, atualiza o valor do registrador auxOverflow;
      
      clk <= ~clk;
      if (Overflow) begin
@@ -39,9 +39,9 @@ always #1 begin
 
 end
 
-always @(posedge finished) begin
+always @(posedge finished) begin // Imprime o resultado na tela e 
+                                 // também a possível ocorrência de um overflow;
      
-
      $display ("%d",$signed(Resultado));
 
      if (auxOverflow) begin
@@ -56,16 +56,16 @@ initial begin
      
      $dumpvars;
 
-     Start = 1'b1;
+     START = 1'b1;
      X <= 8'b11101100; A <= 16'b11; B <= 16'b100; C = 16'b101;
      #15;
-     Reset = 1'b1;
-     Start = 1'b0;
+     RST = 1'b1;
+     START = 1'b0;
      #1;
-     Reset = 1'b0;
+     RST = 1'b0;
      #1;
      X <= 8'b110; A <= 16'b100; B <= 16'b101; C = 16'b0111111111111111;
-     Start = 1'b1;
+     START = 1'b1;
      #15;
      $finish;
 

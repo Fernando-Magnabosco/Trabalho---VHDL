@@ -1,4 +1,4 @@
-module reg_8b_in_16b_out(
+module reg_8b_in_16b_out( // Registrador conversor com input de 8 bits e saída de 16 bits; 
     
     input [7:0] X,
     input [0:0] clk, LX,
@@ -22,7 +22,7 @@ module reg_8b_in_16b_out(
 
 endmodule
 
-module reg_16b_in_16b_out(
+module reg_16b_in_16b_out( // Registrador com IO's de 16 bits;
     
     input [15:0] X,
     input [0:0] clk, LX,
