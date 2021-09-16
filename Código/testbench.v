@@ -20,7 +20,8 @@ reg [15:0] A,B,C;
 wire [0:0] Overflow;
 wire [15:0] Resultado;
 
-//
+// Auxiliar para Overflow;
+
 reg [0:0] auxOverflow = 1'b0;
 
 //Blocos 
